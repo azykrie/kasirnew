@@ -95,12 +95,12 @@
                                     <label>Total Transaction</label>
                                     <input value="Rp. {{number_format ($transactions->sum('total')) }}" type="text" class="form-control" disabled>
                                     <label>Pay</label>
-                                    <input type="number" wire:model="pay" class="form-control">
+                                    <input type="number" wire:model.lazy="pay" class="form-control">
                                     <label>Change</label>
                                     <input value="Rp. {{number_format ($pay - $transactions->sum('total')) }}" type="text" class="form-control" disabled>
                                 </div>
                                 <div class="card-body">
-                                    <button type="submit" class="btn btn-info">Pay</button>
+                                    <button wire:click='save' type="submit" class="btn btn-info">Pay</button>
                                 </div>
                             </table>
                         </div>

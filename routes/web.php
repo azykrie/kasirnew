@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\CashierController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DiscountController;
@@ -8,7 +7,6 @@ use App\Http\Controllers\ItemController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\TransactionController;
-use App\Http\Controllers\TypeController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -43,4 +41,5 @@ Route::middleware(['auth' ,'checklevel:admin'])->group(function () {
 });
 Route::middleware(['auth' ,'checklevel:cashier'])->group(function () {
     route::resource('transaction', TransactionController::class);
+    route::get('/invoice/{order_no}', [TransactionController::class, 'invoice']);
 });

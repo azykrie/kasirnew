@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Item;
+use App\Models\Order;
 use App\Models\Transaction;
 use Illuminate\Http\Request;
 
@@ -16,6 +17,13 @@ class TransactionController extends Controller
         $item = Item::all();
         $transaction = Transaction::all();
         return view('transaction.index', compact('item' , 'transaction'));
+    }
+
+        public function invoice($order_no)
+    {
+        $order = Order::with('orderItem')->where('order_no', $order_no)->first();
+
+        return view ('tranction.invoice', compact('order'));
     }
 
     /**
