@@ -11,7 +11,7 @@ class Order extends Model
     protected $table = 'order';
     protected $guarded = [];
 
-        public function orderItem(): HasMany
+        public function orderItem()
     {
         return $this->hasMany(Transaction::class);
     }

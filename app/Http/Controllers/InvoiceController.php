@@ -2,18 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Discount;
 use Illuminate\Http\Request;
+use App\Models\Order;
+use App\Models\OrderItem;
 
-class DiscountController extends Controller
+class InvoiceController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $discount = Discount::all();
-        return view('discount.index' , compact('discount'));
+
     }
 
     /**
@@ -37,7 +37,8 @@ class DiscountController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $order = Order::find($id);
+        return view('invoice.show', compact('order'));
     }
 
     /**
@@ -53,9 +54,7 @@ class DiscountController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $discount = Discount::find($id);
-        $discount->update($request->all());
-        return redirect('discount');
+        //
     }
 
     /**

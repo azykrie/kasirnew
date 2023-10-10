@@ -7,12 +7,14 @@ use App\Models\orderitem;
 use App\Models\Order;
 use App\Models\Transaction;
 use Livewire\Component;
+use Barryvdh\DomPDF\Facade\Pdf;
+use Barryvdh\DomPDF\PDF as DomPDFPDF;
 
 class TransactionIndex extends Component
 {
     public $item_id;
     public $pay;
-    
+    public  $data;
     protected $rules = [
         'item_id' => 'required|unique:transaction',
         
@@ -91,12 +93,12 @@ class TransactionIndex extends Component
                 'updated_at' => \Carbon\carbon::now()
             );
 
-            $orderItem =OrderItem::insert($item);;
+            $orderItem = OrderItem::insert($item);;
 
             $deleteTransaction = Transaction::where('id', $value->id)->delete();
         }
-
-        return redirect()->to('/invoice/' . $order->order_no);
+        return redirect()->to('transaction');
+        //  return redirect()->to('/invoice/show' . $order->order_no);
     }
 
 }

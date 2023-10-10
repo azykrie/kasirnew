@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Item;
 use App\Models\Order;
+use App\Models\OrderItem;
 use App\Models\Transaction;
 use Illuminate\Http\Request;
 
@@ -21,9 +22,8 @@ class TransactionController extends Controller
 
         public function invoice($order_no)
     {
-        $order = Order::with('orderItem')->where('order_no', $order_no)->first();
-
-        return view ('tranction.invoice', compact('order'));
+        $orderItem = OrderItem::findOrFail($order_no);
+        return view ('transaction.invoice $order->order_no', compact('order'));
     }
 
     /**
