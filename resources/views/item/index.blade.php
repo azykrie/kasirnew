@@ -46,7 +46,7 @@
                                 <td>{{ $item->item_name }}</td>
                                 <td>{{ $item->category->category }}</td>
                                 <td>{{ $item->stock }}</td>
-                                <td>Rp.{{ $item->price }}</td>
+                                <td>Rp. {{number_format( $item->price )}}</td>
                                 <td>
                                 <form action="{{ route('item.destroy', $item->id) }}" method="post">
                                 <a class="btn btn-primary" href="{{ route('item.edit', $item->id) }}" >Edit</a>

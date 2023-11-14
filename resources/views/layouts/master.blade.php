@@ -219,15 +219,6 @@
                                     </p>
                                 </a>
                             </li>
-                            <li class="nav-header">Setting</li>
-                            <li class="nav-item">
-                                <a href="{{ route('discount.index') }}" class="nav-link">
-                                    <i class="nav-icon fas fa-plus-square"></i>
-                                    <p>
-                                        Setting Dsicount
-                                    </p>
-                                </a>
-                            </li>
                             <li class="nav-header">Master</li>
                             <li class="nav-item">
                                 <a href="{{ route('user.index') }}" class="nav-link">

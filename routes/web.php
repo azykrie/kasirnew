@@ -3,6 +3,7 @@
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DiscountController;
+use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\ItemController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ReportController;
@@ -32,7 +33,6 @@ Route::post('/logout', [LoginController::class, 'logout'])->name(' authenticate'
 
 Route::middleware(['auth' ,'checklevel:admin'])->group(function () {
     Route::resource('dashboard', DashboardController::class);
-    Route::resource('discount', DiscountController::class);
     route::resource('user', UserController::class);
     route::resource('category' , CategoryController::class);
     route::resource('item', ItemController::class);
@@ -41,5 +41,5 @@ Route::middleware(['auth' ,'checklevel:admin'])->group(function () {
 });
 Route::middleware(['auth' ,'checklevel:cashier'])->group(function () {
     route::resource('transaction', TransactionController::class);
-    route::get('/invoice/{order_no}', [TransactionController::class, 'invoice']);
+    route::resource('invoice', InvoiceController::class);
 });
